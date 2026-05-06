@@ -8,7 +8,7 @@ import plotly.express as px
 st.set_page_config(page_title="따릉이 이용 효율 분석", layout="wide")
 
 # 2. 데이터베이스 연결 확인
-DB_FILE = 'bicycle.db'
+DB_FILE = '자전거.db'
 
 def get_connection():
     return sqlite3.connect(DB_FILE)
