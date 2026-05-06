@@ -28,7 +28,7 @@ def load_data():
         AVG(A.이용시간) AS 평균이용시간,
         SUM(A.이용건수) AS 총이용건수
     FROM 이용정보 A
-    JOIN 기온 B ON SUBSTR(A.대여일자, 1, 6) = B.년월
+    JOIN 기온 B ON SUBSTR(A.대여일자, 1, 10) = B.년월
     GROUP BY B.평균기온
     ORDER BY B.평균기온 ASC;
     """
@@ -58,7 +58,7 @@ st.plotly_chart(fig1, use_container_width=True)
 with st.expander("🔍 SQL 및 인사이트 보기"):
     st.code("""
 SELECT B.평균기온, SUM(A.이용건수) AS 총이용건수
-FROM 이용정보 A JOIN 기온 B ON SUBSTR(A.대여일자, 1, 6) = B.년월
+FROM 이용정보 A JOIN 기온 B ON SUBSTR(A.대여일자, 1, 10) = B.년월
 GROUP BY B.평균기온;
     """)
     st.write("""
@@ -78,7 +78,7 @@ st.plotly_chart(fig2, use_container_width=True)
 with st.expander("🔍 SQL 및 인사이트 보기"):
     st.code("""
 SELECT B.평균기온, AVG(A.이용시간) AS 평균이용시간
-FROM 이용정보 A JOIN 기온 B ON SUBSTR(A.대여일자, 1, 6) = B.년월
+FROM 이용정보 A JOIN 기온 B ON SUBSTR(A.대여일자, 1, 10) = B.년월
 GROUP BY B.평균기온;
     """)
     st.write("""
